@@ -1,0 +1,9 @@
+Entity folder meyimpan sebuah file yang isinya berupa class, dimana class tersebut sebagai representasi 
+untuk menyiman data didalam array di (file Repository/TodoListRepository/TodolistRepositoryImpl),
+
+1. add
+Untuk menambahkan todo kita hanya perlu menambahkan array $todolist dengan cara munggunakan function save(), save() membutuhkan argument berupa object dari class todolist lalu pada TodolistServiceImpl function addTodolist() 
+
+
+2. show
+Tempat menyimpan data todolist berada di file Repository/todolistRepository.php di dalam class TodolistRepositoryImpl property $todolist yang merupakan array, data yang disimpan berupa object dari class Todolist. ketika ingin menampilkan menggunakan data todolist, hanya perlu menggunakan function findall() yang returnnya array $todolist (indexnya angka yang dimulai dari 1, dan valuenya berupa obejct) lalu pada data yang telah ada kita iterasi menggunakan foreach di dalam class TodolistServiceImpl function showTodolist() namun karena valuenya berupa object kita perlu mendapatkan propertynya menggunakan function getTodo()

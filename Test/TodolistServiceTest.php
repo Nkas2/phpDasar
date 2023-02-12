@@ -24,4 +24,19 @@ function testAddTodolist()
 
     $todolistService->showTodolist();
 }
-testAddTodolist();
+// testAddTodolist();
+function testRemoveTodolist()
+{
+    $todolistService = new TodolistServiceImpl(new TodolistRepositoryImpl());
+
+    $todolistService->addTodolist("makan");
+    $todolistService->addTodolist("minum");
+
+    $todolistService->showTodolist();
+
+    $todolistService->removeTodolist(1);
+    $todolistService->removeTodolist(5);
+
+    $todolistService->showTodolist();
+}
+testRemoveTodolist();
