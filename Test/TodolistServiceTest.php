@@ -1,42 +1,46 @@
 <?php
-use Repository\TodolistRepositoryImpl2;
+
 require_once(__DIR__ . "/../Service/TodolistService.php");
 require_once(__DIR__ . "/../Repository/TodoListRepository.php");
 require_once(__DIR__ . "/../Entity/Todolist.php");
+require_once(__DIR__ . '/../Config/Database.php');
 
+use Config\Database;
 use Repository\TodolistRepositoryImpl;
 use Service\TodolistServiceImpl;
 
 function testShowTodolist()
 {
-    $todolistService = new TodolistServiceImpl(new TodolistRepositoryImpl());
-
+    $connection = Database::getConnection();
+    $todolistService = new TodolistServiceImpl(new TodolistRepositoryImpl($connection));
+    $todolistService->addTodolist("makan");
+    $todolistService->addTodolist("minum");
     $todolistService->showTodolist();
 }
 
-// testShowTodolist();
+testShowTodolist();
 function testAddTodolist()
 {
-    $todolistService = new TodolistServiceImpl(new TodolistRepositoryImpl());
+    $connection = Database::getConnection();
+    $todolistService = new TodolistServiceImpl(new TodolistRepositoryImpl($connection));
 
     $todolistService->addTodolist("makan");
     $todolistService->addTodolist("minum");
 
-    $todolistService->showTodolist();
+    // $todolistService->showTodolist();
 }
 // testAddTodolist();
 function testRemoveTodolist()
 {
-    $todolistService = new TodolistServiceImpl(new TodolistRepositoryImpl());
+    $connection = Database::getConnection();
+    $todolistService = new TodolistServiceImpl(new TodolistRepositoryImpl($connection));
 
-    $todolistService->addTodolist("makan");
-    $todolistService->addTodolist("minum");
-
-    $todolistService->showTodolist();
-
-    $todolistService->removeTodolist(1);
     $todolistService->removeTodolist(5);
+    $todolistService->removeTodolist(4);
+    $todolistService->removeTodolist(3);
+    $todolistService->removeTodolist(2);
+    $todolistService->removeTodolist(1);
 
-    $todolistService->showTodolist();
+    
 }
-testRemoveTodolist();
+// testRemoveTodolist();

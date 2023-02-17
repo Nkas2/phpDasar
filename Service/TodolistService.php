@@ -24,7 +24,7 @@ namespace Service{
             echo "Todo list" . PHP_EOL;
 
             foreach($this->todolistRepository->findall() as $number => $value){
-                echo "$number. ". $value->getTodo() .PHP_EOL; // error
+                echo $value->getId() . ". ". $value->getTodo() .PHP_EOL; // error
             }
         }
 
@@ -37,9 +37,9 @@ namespace Service{
 
         public function removeTodolist(int $number): void {
             if ($this->todolistRepository->remove($number)) {
-                echo "Berhasil menghapus todo";
+                echo "Berhasil menghapus todo" . PHP_EOL;
             }else {
-                echo "Gagal menghapus todo";
+                echo "Gagal menghapus todo" . PHP_EOL;
             }
         }
     }
